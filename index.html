@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101510">
+  <title>Coke_Server｜Minecraft 伺服器</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #101510;
+      --panel: #1a211b;
+      --green: #84e08a;
+      --muted: #b7c1b6;
+      --line: #303c31;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: #f3f6f1;
+      background:
+        radial-gradient(ellipse at 50% 0%, #27412b 0, transparent 52%),
+        var(--bg);
+      font-family: system-ui, -apple-system, "Noto Sans TC", sans-serif;
+      line-height: 1.7;
+    }
+
+    .container {
+      width: min(940px, calc(100% - 32px));
+      margin: auto;
+    }
+
+    header {
+      padding: 68px 0 42px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 13px;
+      color: var(--green);
+      border: 1px solid #456b49;
+      border-radius: 999px;
+      background: #19301c;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 18px 0 8px;
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+    }
+
+    header p {
+      max-width: 620px;
+      margin: 12px auto 0;
+      color: var(--muted);
+    }
+
+    main {
+      padding-bottom: 56px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: linear-gradient(145deg, #1d271e, var(--panel));
+      box-shadow: 0 12px 35px #0003;
+    }
+
+    .card h2 {
+      margin: 0 0 14px;
+      font-size: 1.25rem;
+    }
+
+    .card p {
+      margin: 8px 0;
+      color: var(--muted);
+    }
+
+    .server-card {
+      min-width: 0;
+    }
+
+    .server-label {
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    code {
+      display: block;
+      overflow-wrap: anywhere;
+      margin: 8px 0 12px;
+      padding: 12px;
+      border: 1px solid #344337;
+      border-radius: 10px;
+      background: #101610;
+      color: #e9f8e9;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 9px 14px;
+      border: 0;
+      border-radius: 9px;
+      color: #102012;
+      background: var(--green);
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    button:hover {
+      filter: brightness(1.08);
+    }
+
+    button:focus-visible {
+      outline: 3px solid white;
+      outline-offset: 3px;
+    }
+
+    .rules {
+      margin-top: 18px;
+    }
+
+    .rules ol {
+      margin: 0;
+      padding-left: 1.4rem;
+    }
+
+    .rules li {
+      padding: 12px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .rules li:first-child {
+      border-top: 0;
+    }
+
+    .penalty {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .notice {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-left: 4px solid #e8bd54;
+      border-radius: 8px;
+      background: #292719;
+      color: #f2e7bc;
+    }
+
+    footer {
+      padding: 22px 0 34px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 650px) {
+      header {
+        padding-top: 48px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="container">
+    <span class="badge">🌐 網站 24 小時開放</span>
+
+    <h1>Coke_Server</h1>
+
+    <p>
+      你好！歡迎來到 Coke_Server。這裡是一個剛開幕的小小伺服器，
+      因此多人同時遊玩會稍微卡頓。如果你喜歡，也不妨幫我們分享出去！
+    </p>
+  </header>
+
+  <main class="container">
+    <section class="grid" aria-label="伺服器資訊">
+      <article class="card server-card">
+        <h2>☕ Java 版</h2>
+        <span class="server-label">伺服器 IP</span>
+        <code id="java-ip">jensen-sgi.tun.ply.gg</code>
+        <button type="button" onclick="copyText('java-ip', this)">
+          複製 Java IP
+        </button>
+      </article>
+
+      <article class="card server-card">
+        <h2>🧱 基岩版</h2>
+        <span class="server-label">伺服器 IP</span>
+        <code id="bedrock-ip">dedication-disposed.tun.ply.gg</code>
+        <p><strong>Port：</strong>19132</p>
+        <button type="button" onclick="copyText('bedrock-ip', this)">
+          複製基岩版 IP
+        </button>
+      </article>
+
+      <article class="card">
+        <h2>📌 伺服器資訊</h2>
+        <p><strong>版本：</strong>26.3</p>
+        <p><strong>伺服器開放時間：</strong>隨機公告</p>
+      </article>
+
+      <article class="card">
+        <h2>💚 新服歡迎</h2>
+        <p>
+          伺服器剛開幕，歡迎來一起遊玩、認識新朋友。
+          多人同時上線時可能會出現延遲，敬請體諒！
+        </p>
+      </article>
+    </section>
+
+    <section class="card rules">
+      <h2>🚫 規則‼️</h2>
+
+      <ol>
+        <li>
+          禁止使用 X-Ray 等相關外掛遊玩。
+          <span class="penalty">
+            如被管理員發現或遭到舉報，將視情況處罰。
+          </span>
+        </li>
+
+        <li>
+          禁止故意使用高功率紅石讓伺服器卡頓。
+          <span class="penalty">將記過 2 次（5 次將永踢）。</span>
+        </li>
+
+        <li>
+          禁止偷竊他人財產。
+          <span class="penalty">將記過 4 次（5 次將永踢）。</span>
+        </li>
+
+        <li>
+          禁止破壞他人建築。
+          <span class="penalty">將直接永踢。</span>
+        </li>
+
+        <li>
+          禁止辱罵他人造成對方不舒服。
+          <span class="penalty">將記過 3 次（5 次將永踢）。</span>
+        </li>
+      </ol>
+
+      <div class="notice">
+        請尊重其他玩家與管理員，一起維護友善的遊戲環境！
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Coke_Server · 祝你遊玩愉快！
+  </footer>
+
+  <script>
+    async function copyText(elementId, button) {
+      const text = document.getElementById(elementId).textContent.trim();
+      const originalLabel = button.textContent;
+
+      try {
+        await navigator.clipboard.writeText(text);
+        button.textContent = "已複製！";
+      } catch {
+        const input = document.createElement("textarea");
+        input.value = text;
+        input.style.position = "fixed";
+        input.style.opacity = "0";
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        input.remove();
+        button.textContent = "已複製！";
+      }
+
+      setTimeout(() => {
+        button.textContent = originalLabel;
+      }, 1600);
+    }
+  </script>
+</body>
+</html>
+```
